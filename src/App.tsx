@@ -127,7 +127,7 @@ function App() {
       <a
         href={images.resume}
         target="_blank"
-        rel="noopener noreferrer"
+        // rel="noopener noreferrer"
         className={`fixed top-4 right-4 md:top-8 md:right-8 z-50 px-3 py-1.5 md:px-4 md:py-2 text-sm md:text-base rounded-full transition-all duration-300 shadow-lg ${
           isInDarkSection
             ? 'bg-white text-[#09192f] hover:bg-gray-100'
