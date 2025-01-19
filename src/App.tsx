@@ -1,9 +1,10 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import { Github, Linkedin, Mail, ExternalLink, ChevronDown, Database, Brain, LineChart, Folder, ExternalLink as LinkIcon, FileText } from 'lucide-react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
+import { Github, Linkedin, Mail, ExternalLink, ChevronDown, Database, Brain, LineChart, Folder, ExternalLink as LinkIcon, FileText, MapPin, Calendar, Code, Clock } from 'lucide-react';
 import Spline from '@splinetool/react-spline';
 import SplineErrorBoundary from './SplineErrorBoundary';
 import Preloader from './Preloader';
 import { images } from './images';
+import { useCountUp } from './hooks/useCountUp';
 
 function App() {
   const [showPreloader, setShowPreloader] = useState(true);
@@ -12,6 +13,29 @@ function App() {
   const [splineLoaded, setSplineLoaded] = useState(false);
   const [showScrollIndicator, setShowScrollIndicator] = useState(true);
   const [isInDarkSection, setIsInDarkSection] = useState(true);  // Start as true since Hero is dark
+  const [age, setAge] = useState(0);
+  const aboutRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setAge(26);
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    if (aboutRef.current) {
+      observer.observe(aboutRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  const displayAge = useCountUp(age, 1000);
   
   useEffect(() => {
     const handleScroll = () => {
@@ -127,7 +151,7 @@ function App() {
       <a
         href={images.resume}
         target="_blank"
-        // rel="noopener noreferrer"
+        rel="noopener noreferrer"
         className={`fixed top-4 right-4 md:top-8 md:right-8 z-50 px-3 py-1.5 md:px-4 md:py-2 text-sm md:text-base rounded-full transition-all duration-300 shadow-lg ${
           isInDarkSection
             ? 'bg-white text-[#09192f] hover:bg-gray-100'
@@ -208,20 +232,33 @@ function App() {
             <h2 className="text-3xl font-bold text-white">02. About Me</h2>
             <div className="h-px bg-white/70 flex-grow max-w-[70%]"></div>
           </div>
-          <div className="grid md:grid-cols-2 gap-12">
+          <div ref={aboutRef} className="grid md:grid-cols-2 gap-12">
             <div className="space-y-6">
-              <p className="mb-6 text-gray-300">
-                I'm <span className="text-[#00ff88] font-semibold">Nikhil Premachandra Rao</span>, a dedicated <span className="text-[#00ff88] font-semibold">Data Scientist</span> with a strong foundation in machine learning, statistical modeling, and software development, currently pursuing a <span className="text-[#00ff88] font-semibold">Master of Science in Data Science</span> at the University of Massachusetts Dartmouth. I specialize in building predictive models, automating workflows, and solving real-world problems using advanced technologies like <span className="text-[#00ff88] font-semibold">neural networks</span> and <span className="text-[#00ff88] font-semibold">AutoML</span>. Passionate about continuous learning and collaboration, I thrive on challenges that require precision, creativity, and delivering impactful, data-driven solutions. With a results-oriented mindset, I am committed to bridging the gap between data and decision-making to drive measurable value in every project.
-              </p>
-              <div className="mt-8">
-                <h3 className="text-xl font-semibold text-white mb-4">Core Competencies</h3>
-                <ul className="list-disc list-inside space-y-2 text-gray-300">
-                  <li>Machine Learning & Deep Learning</li>
-                  <li>Statistical Analysis & Modeling</li>
-                  <li>Data Visualization & Reporting</li>
-                  <li>Python, R, SQL</li>
-                  <li>Big Data Technologies</li>
-                </ul>
+              <div className="mb-8">
+                <h3 className="text-[2.3rem] font-bold text-[#00ff88] mb-6">
+                  I'm Nikhil Premachandra Rao
+                </h3>
+                <div className="flex flex-col gap-4 mb-6">
+                  <div className="flex items-center gap-2 text-gray-300">
+                    <MapPin className="w-5 h-5 text-[#00ff88]" />
+                    <span>Boston, Massachusetts</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-gray-300">
+                    <Calendar className="w-5 h-5 text-[#00ff88]" />
+                    <span><span className="tabular-nums">{displayAge}</span> years old</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-gray-300">
+                    <Code className="w-5 h-5 text-[#00ff88]" />
+                    <span>Data Scientist</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-gray-300">
+                    <Clock className="w-5 h-5 text-[#00ff88]" />
+                    <span>3+ Years of work Experience</span>
+                  </div>
+                </div>
+                <p className="text-gray-300">
+                  As a dedicated <span className="text-[#00ff88] font-semibold">data scientist</span>, I bring a strong foundation in Maths, Machine learning, and Neural networks to every project. With a <span className="text-[#00ff88] font-semibold">Master of Science in Data Science</span> and hands-on experience with various predictive modeling techniques and data-driven solutions, I specialize in building robust, scalable models that leverage cutting-edge algorithms and data manipulation skills to provide actionable insights and enhance decision-making.
+                </p>
               </div>
             </div>
             <div className="relative">
@@ -621,7 +658,7 @@ function App() {
               <a 
                 href={images.resume}
                 target="_blank" 
-                rel="noopener noreferrer" 
+               rel="noopener noreferrer"
                 className="flex items-center gap-3 text-[#09192f] hover:text-gray-600 transition-colors"
               >
                 <FileText className="w-6 h-6" />
