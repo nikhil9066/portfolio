@@ -726,7 +726,11 @@ function App() {
       {/* Footer */}
       <footer className="py-8 bg-[#09192f] text-white">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <p>© {new Date().getFullYear()} Nik. All rights reserved.</p>
+          <div className="space-y-2">
+            <p>© {new Date().getFullYear()} Nik. All rights reserved.</p>
+            <p>Crafted with precision (and a lot of coffee ☕) by Nikhil Premachandra Rao</p>
+            <p>transforming data into solutions 📊, one algorithm at a time 💻</p>
+          </div>
         </div>
       </footer>
     </div>
