@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
-import { Github, Linkedin, Mail, ExternalLink, ChevronDown, Database, Brain, LineChart, Folder, ExternalLink as LinkIcon, FileText, MapPin, Calendar, Code, Clock } from 'lucide-react';
+import { Github, Linkedin, Mail, ExternalLink, ChevronDown, Database, Brain, LineChart, Folder, ExternalLink as LinkIcon, FileText, MapPin, Calendar, Code, Clock, GraduationCap } from 'lucide-react';
 import Spline from '@splinetool/react-spline';
 import SplineErrorBoundary from './SplineErrorBoundary';
 import Preloader from './Preloader';
@@ -519,6 +519,13 @@ function App() {
                 date: "Dec 2024",
                 credentialId: "IGZ9WVSUZCYZ",
                 link: "https://www.coursera.org/account/accomplishments/verify/IGZ9WVSUZCYZ"
+              },
+              {
+                title: "ChatGPT Prompt Engineering for Developers",
+                issuer: "DeepLearning.AI",
+                date: "Jan 2025",
+                credentialId: "b195106074d5",
+                link: "https://learn.deeplearning.ai/accomplishments/822e8d23-6e6a-4cea-b49c-b195106074d5?usp=sharing"
               }
             ].map((cert, index) => (
               <div key={index} className="group relative bg-white rounded-2xl shadow-lg overflow-hidden">
