@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
-import { Github, Linkedin, Mail, ExternalLink, ChevronDown, Database, Brain, LineChart, Folder, ExternalLink as LinkIcon, FileText, MapPin, Calendar, Code, Clock, GraduationCap } from 'lucide-react';
-import Spline from '@splinetool/react-spline';
+import { Github, Linkedin, Mail, ExternalLink, ChevronDown, Database, GraduationCap, LineChart, Folder, ExternalLink as LinkIcon, FileText, MapPin, Calendar, Code, Clock, Building2, Briefcase, School, Code2, Building, GanttChart, Brain, Bot, Cpu, BookOpen } from 'lucide-react';import Spline from '@splinetool/react-spline';
 import SplineErrorBoundary from './SplineErrorBoundary';
 import Preloader from './Preloader';
 import { images } from './images';
@@ -289,36 +288,42 @@ function App() {
                   period: "September 2023 - April 2025",
                   title: "University of Massachusetts Dartmouth",
                   role: "Master of Science - Data Science",
+                  icon: School,
                   align: "right"
                 },
                 {
                   period: "June 2020 - June 2023",
                   title: "Cerner Corporation",
                   role: "Data Scientist / Production Software Engineer",
+                  icon: Building2,
                   align: "left"
                 },
                 {
                   period: "January 2020 - June 2020",
                   title: "Cerner Corporation",
                   role: "Software Intern",
+                  icon: Code2,
                   align: "right"
                 },
                 {
                   period: "September 2019 - November 2019",
                   title: "Arcapsis",
                   role: "Web Development",
+                  icon: GanttChart,
                   align: "left"
                 },
                 {
                   period: "June 2019 - August 2019",
                   title: "Central Manufacturing Technology Institute",
                   role: "Software Engineer Intern",
+                  icon: Building,
                   align: "right"
                 },
                 {
                   period: "2016 - 2020",
                   title: "Siddaganga Institute of Technology",
                   role: "Bachelor of Engineering - Computer Science",
+                  icon: School,
                   align: "left"
                 }
               ].map((item, index) => (
@@ -340,7 +345,10 @@ function App() {
                       <div className={`bg-white p-4 rounded-lg shadow-lg ${
                         item.align === 'left' ? 'ml-8' : 'mr-8'
                       } hover:shadow-xl transition-all duration-300`}>
-                        <h3 className="text-xl font-semibold text-[#09192f] mb-2">{item.title}</h3>
+                        <div className="flex items-center gap-2 mb-2">
+                          {item.icon && <item.icon className="w-5 h-5 text-[#09192f]" />}
+                          <h3 className="text-xl font-semibold text-[#09192f]">{item.title}</h3>
+                        </div>
                         <p className="text-gray-600">{item.role}</p>
                       </div>
                     </div>
@@ -504,28 +512,32 @@ function App() {
                 issuer: "DeepLearning.AI, Stanford University",
                 date: "June 2024",
                 credentialId: "MCQEAHC8LAGS",
-                link: "https://www.coursera.org/account/accomplishments/verify/MCQEAHC8LAGS"
+                link: "https://www.coursera.org/account/accomplishments/verify/MCQEAHC8LAGS",
+                icon: Brain
               },
               {
                 title: "Advanced Learning Algorithms",
                 issuer: "DeepLearning.AI, Stanford University",
                 date: "Sept 2024",
                 credentialId: "WN99E17LTHMI",
-                link: "https://www.coursera.org/account/accomplishments/verify/WN99E17LTHMI"
+                link: "https://www.coursera.org/account/accomplishments/verify/WN99E17LTHMI",
+                icon: Cpu
               },
               {
                 title: "Supervised Machine Learning: Regression and Classification",
                 issuer: "DeepLearning.AI, Stanford University",
                 date: "Dec 2024",
                 credentialId: "IGZ9WVSUZCYZ",
-                link: "https://www.coursera.org/account/accomplishments/verify/IGZ9WVSUZCYZ"
+                link: "https://www.coursera.org/account/accomplishments/verify/IGZ9WVSUZCYZ",
+                icon: BookOpen
               },
               {
                 title: "ChatGPT Prompt Engineering for Developers",
                 issuer: "DeepLearning.AI",
                 date: "Jan 2025",
                 credentialId: "b195106074d5",
-                link: "https://learn.deeplearning.ai/accomplishments/822e8d23-6e6a-4cea-b49c-b195106074d5?usp=sharing"
+                link: "https://learn.deeplearning.ai/accomplishments/822e8d23-6e6a-4cea-b49c-b195106074d5?usp=sharing",
+                icon: Bot
               }
             ].map((cert, index) => (
               <div key={index} className="group relative bg-white rounded-2xl shadow-lg overflow-hidden">
