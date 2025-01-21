@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
-import { Github, Linkedin, Mail, ExternalLink, ChevronDown, Database, GraduationCap, LineChart, Folder, ExternalLink as LinkIcon, FileText, MapPin, Calendar, Code, Clock, Building2, Briefcase, School, Code2, Building, GanttChart, Brain, Bot, Cpu, BookOpen } from 'lucide-react';import Spline from '@splinetool/react-spline';
+import { Github, Linkedin, Mail, ExternalLink, ChevronDown, Database, GraduationCap, LineChart, Folder, ExternalLink as LinkIcon, FileText, MapPin, Calendar, Code, Clock, Building2, Briefcase, School, Code2, Building, GanttChart, Brain, Bot, Cpu, BookOpen } from 'lucide-react';
+import Spline from '@splinetool/react-spline';
 import SplineErrorBoundary from './SplineErrorBoundary';
 import Preloader from './Preloader';
 import { images } from './images';
@@ -535,7 +536,7 @@ function App() {
                 title: "ChatGPT Prompt Engineering for Developers",
                 issuer: "DeepLearning.AI",
                 date: "Jan 2025",
-                credentialId: "b195106074d5",
+                credentialId: "822e8d23-6e6a-4cea-b49c-b195106074d5",
                 link: "https://learn.deeplearning.ai/accomplishments/822e8d23-6e6a-4cea-b49c-b195106074d5?usp=sharing",
                 icon: Bot
               }
@@ -544,7 +545,7 @@ function App() {
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-indigo-600 translate-y-full transform transition-transform duration-300 group-hover:translate-y-0"></div>
                 <div className="relative p-6 transition-colors duration-300 group-hover:text-white">
                   <div className="flex justify-between items-start mb-4">
-                    <Brain className="w-10 h-10 text-blue-600 transition-colors duration-300 group-hover:text-white" />
+                    {cert.icon && <cert.icon className="w-10 h-10 text-blue-600 transition-colors duration-300 group-hover:text-white" />}
                     <a
                       href={cert.link}
                       target="_blank"
